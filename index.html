@@ -15,50 +15,91 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <div class="weather-daily-content">
-          <div class="row">
-            <div class="col-3">
-              <div class="city-col">
-                <h1 id="city">Enter a City</h1>
-                <ul class="date-time-list">
-                  <li><span id="current-date"></span></li>
-                  <li><span id="current-time"></span></li>
-                </ul>
-                <ul class="weather-info-list">
-                  <li class="weather-description" id="description"></li>
-                  <li class="weather-advice" id="advice"></li>
+      <div class="weather-app-background">
+        <div class="weather-app">
+          <div class="weather-daily-content">
+            <div class="row">
+              <div class="col-3">
+                <div class="city-col">
+                  <h1 id="city">Enter a City</h1>
+                  <ul class="date-time-list">
+                    <li><span id="current-date"></span></li>
+                    <li><span id="current-time"></span></li>
+                  </ul>
+                  <ul class="weather-info-list">
+                    <li class="weather-description" id="description"></li>
+                    <li class="weather-advice" id="advice"></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li class="daily-temp">
+                    <span id="current-temp"></span>
+                    <span class="units">
+                      <a href="#">°C</a> | <a href="#">°F</a>
+                    </span>
+                  </li>
                 </ul>
               </div>
+              <div class="col-3 d-flex flex-column justify-content-end">
+                <ul>
+                  <li class="extra-facts">
+                    <span class="bold-weather-label">Feels Like: </span
+                    ><span id="feels-like"></span>
+                  </li>
+                  <li class="extra-facts">
+                    <span class="bold-weather-label">Humidity: </span
+                    ><span id="current-humid"></span>
+                  </li>
+                  <li class="extra-facts">
+                    <span class="bold-weather-label">Wind: </span
+                    ><span id="current-wind"></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2 daily-icon">
+                <img id="main-icon" src="#" alt="" />
+              </div>
             </div>
-            <div class="col-4">
-              <ul>
-                <li class="daily-temp">
-                  <span id="current-temp"></span>
-                  <span class="units">
-                    <a href="#">°C</a> | <a href="#">°F</a>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-end">
-              <ul>
-                <li class="extra-facts">
-                  <span class="bold-weather-label">Feels Like: </span
-                  ><span id="feels-like"></span>
-                </li>
-                <li class="extra-facts">
-                  <span class="bold-weather-label">Humidity: </span
-                  ><span id="current-humid"></span>
-                </li>
-                <li class="extra-facts">
-                  <span class="bold-weather-label">Wind: </span
-                  ><span id="current-wind"></span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-2 daily-icon">
-              <img id="main-icon" src="#" alt="" />
+          </div>
+          <div class="weekly-weather">
+            <div class="row">
+              <div class="col-md-10">
+                <input
+                  id="city-search-box"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter a City"
+                  aria-label="Enter a City"
+                />
+              </div>
+              <div class="col-md-2">
+                <button
+                  id="search-button-day"
+                  type="button"
+                  class="btn btn-primary main-button search-button"
+                  style="
+                    --bs-btn-padding-y: 0.5rem;
+                    --bs-btn-padding-x: 2rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  Search
+                </button>
+                <button
+                  id="current-location-button-day"
+                  type="button"
+                  class="btn btn-primary main-button current-location-button"
+                  style="
+                    --bs-btn-padding-y: 0.5rem;
+                    --bs-btn-padding-x: 2rem;
+                    --bs-btn-font-size: 0.75rem;
+                  "
+                >
+                  My Location
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -78,12 +119,12 @@
         </div>
         <br />
         <div class="icon-attribute">
-          Icon by <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on
+          Icon by
+          <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on
           <a href="https://freeicons.io">freeicons.io</a>
         </div>
       </div>
     </div>
-
     <script src="src/app.js"></script>
     <script
       src="https://kit.fontawesome.com/1c65545e25.js"

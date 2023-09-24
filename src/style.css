@@ -1,9 +1,8 @@
-.weather-app {
+.weather-app-background {
   background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   max-width: 1000px;
   min-width: 850px;
   margin: 20px auto;
-  padding-top: 10px;
   padding-bottom: 10px;
   font-family: "Noto Sans", sans-serif;
   color: #47555d;
@@ -11,9 +10,8 @@
 .weather-daily-content {
   position: relative;
   background: linear-gradient(to top, #7bcbed 0%, #05b0ff 100%);
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 20px;
+  margin: 10px;
+  padding-top: 20px;
 }
 li {
   list-style-type: none;
@@ -54,6 +52,25 @@ li {
   text-align: left;
   padding-right: 30px;
   vertical-align: bottom;
+}
+
+.weather-app {
+  color: #47555d;
+  text-align: center;
+  padding: 10px;
+}
+.weekly-weather {
+  margin: 10px;
+  padding-top: 20px;
+}
+.main-button {
+  width: 150px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+}
+.current-location-button {
+  margin-top: 10px;
 }
 .social-icon {
   display: block;
