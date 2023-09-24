@@ -1,24 +1,3 @@
-let apiKey = "588ca52dd320c1944ac6o970bb9t8def"; // Avoid hardcoding API key
-let units = "metric";
-let city = "London";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-
-axios.get(apiUrl).then((response) => {
-  displayCity(response);
-  displayTemperature(response);
-  displayDescription(response);
-  displayFeelsLike(response);
-  displayHumidity(response);
-  displayWind(response);
-  displayMainIcon(response);
-});
-
-//function to show the current city
-function displayCity(response) {
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
-}
-
 //function to show the current date
 
 function getDateSuffix(date) {
@@ -83,6 +62,27 @@ function currentTime() {
 }
 let displayCurrentTime = document.querySelector("#current-time");
 displayCurrentTime.innerHTML = currentTime();
+
+let apiKey = "588ca52dd320c1944ac6o970bb9t8def"; // Avoid hardcoding API key
+let units = "metric";
+let city = "London";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+
+axios.get(apiUrl).then((response) => {
+  displayCity(response);
+  displayTemperature(response);
+  displayDescription(response);
+  displayFeelsLike(response);
+  displayHumidity(response);
+  displayWind(response);
+  displayMainIcon(response);
+});
+
+//function to show the current city
+function displayCity(response) {
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.city;
+}
 
 //function to show the current temperature
 function displayTemperature(response) {
