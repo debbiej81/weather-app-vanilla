@@ -19,7 +19,9 @@ li {
 .city-col {
   text-align: right;
   padding-right: 20px;
+  padding-left: 20px;
   border-right: 3px solid #1280e8;
+  max-width: 100%;
 }
 .weather-description {
   font-size: 24px;

@@ -50,8 +50,6 @@ function currentDate() {
 let displayTodaysDate = document.querySelector("#current-date");
 displayTodaysDate.innerHTML = currentDate();
 
-//function to show the current time
-
 function currentTime() {
   let now = new Date();
   let currentHours = now.getHours();
@@ -63,26 +61,7 @@ function currentTime() {
 let displayCurrentTime = document.querySelector("#current-time");
 displayCurrentTime.innerHTML = currentTime();
 
-let apiKey = "588ca52dd320c1944ac6o970bb9t8def"; // Avoid hardcoding API key
-let units = "metric";
-let city = "London";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-
-axios.get(apiUrl).then((response) => {
-  displayCity(response);
-  displayTemperature(response);
-  displayDescription(response);
-  displayFeelsLike(response);
-  displayHumidity(response);
-  displayWind(response);
-  displayMainIcon(response);
-});
-
-//function to show the current city
-function displayCity(response) {
-  let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
-}
+//The following code updates on screen data based on current location (geo settings)
 
 //function to show the current temperature
 function displayTemperature(response) {
@@ -90,12 +69,27 @@ function displayTemperature(response) {
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
 }
 
+//function to show the current city
+function displayCity(response) {
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.city;
+}
+
+function capitaliseEveryWord(string) {
+  return string
+    .split(" ")
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+}
 //function to show the current description
 function displayDescription(response) {
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.condition.description;
+  let weatherDescription = response.data.condition.description;
+  let capitalisedWeatherDescription = capitaliseEveryWord(weatherDescription);
+  descriptionElement.innerHTML = `${capitalisedWeatherDescription}`;
 }
-
 //function to show the current feels like temperature
 function displayFeelsLike(response) {
   let feelsLikeElement = document.querySelector("#feels-like");
@@ -122,3 +116,51 @@ function displayMainIcon(response) {
   Image.src = response.data.condition.icon_url;
   Image.alt = response.data.condition.icon;
 }
+function fetchWeatherForCurrentPosition(position) {
+  let apiKey = "588ca52dd320c1944ac6o970bb9t8def";
+  let units = "metric";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(function (response) {
+    displayTemperature(response);
+    displayCity(response);
+    displayDescription(response);
+    displayFeelsLike(response);
+    displayHumidity(response);
+    displayWind(response);
+    displayMainIcon(response);
+  });
+}
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", function () {
+  navigator.geolocation.getCurrentPosition(fetchWeatherForCurrentPosition);
+});
+
+//The following code updates on screen data based on searched location
+function fetchWeatherForSearchedCity(response) {
+  let apiKey = "588ca52dd320c1944ac6o970bb9t8def";
+  let units = "metric";
+  let city = document.querySelector("#city-search-box").value;
+  let capitalisedCity = capitaliseEveryWord(city);
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${capitalisedCity}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(function (response) {
+    displayTemperature(response);
+    displayCity(response);
+    displayDescription(response);
+    displayFeelsLike(response);
+    displayHumidity(response);
+    displayWind(response);
+    displayMainIcon(response);
+  });
+}
+let searchedLocationButton = document.querySelector("#search-button");
+searchedLocationButton.addEventListener("click", fetchWeatherForSearchedCity);
+
+let searchedLocationBox = document.querySelector("#city-search-box");
+searchedLocationBox.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" || e.keyCode === 13) {
+    fetchWeatherForSearchedCity();
+  }
+});
