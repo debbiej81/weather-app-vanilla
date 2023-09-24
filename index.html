@@ -36,9 +36,10 @@
                 <ul>
                   <li class="daily-temp">
                     <span id="current-temp"></span>
-                    <span class="units">
-                      <a href="#">°C</a> | <a href="#">°F</a>
-                    </span>
+                    <span class="units" id="unit"
+                      ><a href="#" id="celsius-link" class="active">°C</a> |
+                      <a href="#" id="fahrenheit-link">°F</a></span
+                    >
                   </li>
                 </ul>
               </div>
@@ -86,18 +87,6 @@
                   "
                 >
                   Search
-                </button>
-                <button
-                  id="current-location-button"
-                  type="button"
-                  class="btn btn-primary main-button current-location-button"
-                  style="
-                    --bs-btn-padding-y: 0.5rem;
-                    --bs-btn-padding-x: 2rem;
-                    --bs-btn-font-size: 0.75rem;
-                  "
-                >
-                  My Location
                 </button>
               </div>
             </div>
