@@ -22,18 +22,8 @@ li {
   padding-left: 20px;
   border-right: 3px solid #1280e8;
   max-width: 100%;
-  display: flex; /* Add this */
-  flex-direction: column; /* Add this */
-  justify-content: center; /* Add this */
 }
 
-#city {
-  font-size: 36px; /* Default size, or any size you prefer */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%; /* Make sure the width doesn't exceed the parent */
-}
 .weather-description {
   font-size: 24px;
   font-weight: bold;
