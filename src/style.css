@@ -1,1 +1,70 @@
+.weather-app {
+  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  min-width: 950px;
+  margin: 20px auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Noto Sans", sans-serif;
+  color: #47555d;
+}
+.weather-daily-content {
+  background: linear-gradient(to top, #7bcbed 0%, #05b0ff 100%);
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+}
+li {
+  list-style-type: none;
+}
+.city-col {
+  text-align: right;
+}
+.weather-description {
+  font-size: 24px;
+  font-weight: bold;
+}
+.weather-advice {
+  font-size: 12px;
+}
+.daily-temp {
+  display: flex;
+  align-items: flex-start;
+  font-size: 72px;
+  padding-left: 30px;
+  line-height: 1;
+  padding-top: 30px;
+}
 
+.temp-metric {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.bold-weather-label {
+  font-weight: bold;
+}
+.daily-icon {
+  font-size: 48px;
+  text-align: center;
+  padding-top: 30px;
+}
+.extra-facts {
+  text-align: left;
+  padding-left: 220px;
+  padding-right: 20px;
+}
+.social-icon {
+  display: block;
+  margin: auto;
+  width: 32px;
+}
+.social-link {
+  display: block;
+  text-align: center;
+}
+.icon-attribute {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  font-style: italic;
+}

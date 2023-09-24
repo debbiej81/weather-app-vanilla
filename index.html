@@ -15,37 +15,61 @@
   <body>
     <div class="container">
       <div class="weather-app">
-        <div class="row">
-          <div class="col-3">
-            <h1>London</h1>
-            <ul>
-              <li>Sunday 24th Sept '23</li>
-              <li>09:50</li>
-              <li>clear</li>
-              <li>Use Sunscreen 🧴</li>
-            </ul>
-          </div>
-          <div class="col-6">
-            <ul>
-              <li>17°C | °F</li>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 73%</li>
-              <li>Wind : 2km/h</li>
-            </ul>
-          </div>
-          <div class="col-3">
-            <i class="fa-solid fa-sun fa-2xl" style="color: #ffdb1f"></i>
+        <div class="weather-daily-content">
+          <div class="row">
+            <div class="col-3">
+              <div class="city-col">
+                <h1>London</h1>
+                <ul class="date-time-list">
+                  <li>Sunday 24th Sept '23</li>
+                  <li>09:50</li>
+                </ul>
+                <ul class="weather-info-list">
+                  <li class="weather-description">Clear</li>
+                  <li class="weather-advice">Use Sunscreen 🧴</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li class="daily-temp">
+                  17<span class="temp-metric">°C | °F</span>
+                </li>
+                <li class="extra-facts">
+                  <span class="bold-weather-label">Precipitation:</span> 0%
+                </li>
+                <li class="extra-facts">
+                  <span class="bold-weather-label">Humidity:</span> 73%
+                </li>
+                <li class="extra-facts">
+                  <span class="bold-weather-label">Wind:</span> 2km/h
+                </li>
+              </ul>
+            </div>
+            <div class="col-3 daily-icon">
+              <i class="fa-solid fa-sun fa-2xl" style="color: #ffdb1f"></i>
+            </div>
           </div>
         </div>
-        <small>
-          <a
-            href="https://github.com/debbiej81/weather-app-vanilla"
-            target="_blank"
-            >Open-Source Code</a
-          >, by Debbie Johnson</small
-        >
+      </div>
+      <div class="social-container">
+        <img
+          src="images/github-mark/github purple.png"
+          alt="github Logo"
+          class="social-icon"
+        />
+        <div class="social-link">
+          <a href="https://github.com/debbiej81/weather-app" target="_blank"
+            >DebbieJ81</a
+          >
+        </div>
+        <div class="icon-attribute">
+          Icon by <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on
+          <a href="https://freeicons.io">freeicons.io</a>
+        </div>
       </div>
     </div>
+
     <script src="src/app.js"></script>
     <script
       src="https://kit.fontawesome.com/1c65545e25.js"
