@@ -64,25 +64,29 @@ displayCurrentTime.innerHTML = currentTime();
 //the following code is to display forecast weather info on the page
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-                <div class="weather-forecast-day">${day}</div>
+                <div class="weather-forecast-day">${forecastDay.time}</div>
                 <div class="forecast-img">
                   <img
-                    src="images/github-mark/github-mark.png"
+                    src="${forecastDay.condition.icon_url}"
                     alt="holding pic"
                   />
                 </div>
                 <div class="forecast-temp">
-                  <span class="forecast-max-temp"> 18°</span>
-                  <span class="forecast-min-temp"> 12°</span>
+                  <span class="forecast-max-temp"> ${Math.round(
+                    forecastDay.temperature.maximum
+                  )}°</span>
+                  <span class="forecast-min-temp"> ${Math.round(
+                    forecastDay.temperature.minimum
+                  )}°</span>
                 </div>`;
     forecastHTML = forecastHTML + `</div>`;
   });
