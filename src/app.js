@@ -61,6 +61,14 @@ function currentTime() {
 let displayCurrentTime = document.querySelector("#current-time");
 displayCurrentTime.innerHTML = currentTime();
 
+function formatDay(timestamp) {
+  let date = new date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 //the following code is to display forecast weather info on the page
 
 function displayForecast(response) {
@@ -69,11 +77,14 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-                <div class="weather-forecast-day">${forecastDay.time}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+                <div class="weather-forecast-day">${formatDay(
+                  forecastDay.time
+                )}</div>
                 <div class="forecast-img">
                   <img
                     src="${forecastDay.condition.icon_url}"
@@ -88,11 +99,11 @@ function displayForecast(response) {
                     forecastDay.temperature.minimum
                   )}°</span>
                 </div>`;
-    forecastHTML = forecastHTML + `</div>`;
+      forecastHTML = forecastHTML + `</div>`;
+    }
   });
   forecastElement.innerHTML = forecastHTML;
 }
-
 //The following code updates on screen data based on current location (geo settings)
 
 //function to show the current temperature
