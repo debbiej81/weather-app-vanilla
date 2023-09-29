@@ -66,6 +66,10 @@ li {
   margin: 10px;
   padding-top: 20px;
 }
+#forecast .row {
+  display: flex;
+  justify-content: center;
+}
 .weather-forecast {
   text-align: center;
   margin-top: 20px;

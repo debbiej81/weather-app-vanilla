@@ -67,12 +67,13 @@ function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sat", "Sun", "Mon"];
+  let isFirst = true;
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-                <div class="weather-forecast-day">Sat</div>
+                <div class="weather-forecast-day">${day}</div>
                 <div class="forecast-img">
                   <img
                     src="images/github-mark/github-mark.png"
