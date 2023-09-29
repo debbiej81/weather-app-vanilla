@@ -63,7 +63,8 @@ displayCurrentTime.innerHTML = currentTime();
 
 //the following code is to display forecast weather info on the page
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -179,13 +180,14 @@ function fetchWeatherForSearchedCity(city) {
     displayWind(response);
     displayMainIcon(response);
     getForecast(response);
-    displayForecast();
+    displayForecast(response);
   });
 }
 
-function getForecast() {
+function getForecast(response) {
+  let capitalisedCity = capitaliseEveryWord(response.data.city);
   let apiKey = "588ca52dd320c1944ac6o970bb9t8def";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${capitalisedCity}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
