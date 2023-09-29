@@ -66,6 +66,25 @@ li {
   margin: 10px;
   padding-top: 20px;
 }
+.weather-forcast {
+  text-align: center;
+  margin-top: 20px;
+  display: inline;
+}
+.weather-forcast-day {
+  font-weight: bold;
+  font-size: larger;
+}
+.forcast-img img {
+  padding: 10px;
+  width: 72px;
+}
+.forcast-temp {
+  font-weight: bold;
+}
+.forcast-min-temp {
+  color: #969b9e;
+}
 .main-button {
   width: 150px;
   padding-top: 10px;
