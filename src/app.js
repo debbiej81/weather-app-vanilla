@@ -67,7 +67,6 @@ function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let isFirst = true;
   let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
   days.forEach(function (day) {
     forecastHTML =
@@ -179,8 +178,15 @@ function fetchWeatherForSearchedCity(city) {
     displayHumidity(response);
     displayWind(response);
     displayMainIcon(response);
+    getForecast(response);
     displayForecast();
   });
+}
+
+function getForecast() {
+  let apiKey = "588ca52dd320c1944ac6o970bb9t8def";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let searchedLocationButton = document.querySelector("#search-button");
