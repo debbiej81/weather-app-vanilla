@@ -61,6 +61,33 @@ function currentTime() {
 let displayCurrentTime = document.querySelector("#current-time");
 displayCurrentTime.innerHTML = currentTime();
 
+//the following code is to display forecast weather info on the page
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+                <div class="weather-forecast-day">Sat</div>
+                <div class="forecast-img">
+                  <img
+                    src="images/github-mark/github-mark.png"
+                    alt="holding pic"
+                  />
+                </div>
+                <div class="forecast-temp">
+                  <span class="forecast-max-temp"> 18°</span>
+                  <span class="forecast-min-temp"> 12°</span>
+                </div>`;
+    forecastHTML = forecastHTML + `</div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //The following code updates on screen data based on current location (geo settings)
 
 //function to show the current temperature
@@ -132,6 +159,7 @@ function fetchWeatherForCurrentPosition(position) {
     displayHumidity(response);
     displayWind(response);
     displayMainIcon(response);
+    displayForecast();
   });
 }
 
@@ -150,6 +178,7 @@ function fetchWeatherForSearchedCity(city) {
     displayHumidity(response);
     displayWind(response);
     displayMainIcon(response);
+    displayForecast();
   });
 }
 
