@@ -111,7 +111,7 @@ function displayForecast(response) {
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#current-temp");
   celsiusTemperature = Math.round(response.data.temperature.current);
-  temperatureElement.innerHTML = celsiusTemperature;
+  temperatureElement.innerHTML = `${celsiusTemperature}°C`;
 }
 
 //function to show the current city
@@ -199,7 +199,6 @@ function fetchWeatherForSearchedCity(city) {
     displayWind(response);
     displayMainIcon(response);
     getForecast(response);
-    displayForecast(response);
   });
 }
 
@@ -219,47 +218,6 @@ searchedLocationBox.addEventListener("keydown", function (e) {
     fetchWeatherForSearchedCity();
   }
 });
-
-function fetchWeatherForLondon() {
-  let apiKey = "588ca52dd320c1944ac6o970bb9t8def";
-  let units = "metric";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=London&key=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(function (response) {
-    displayTemperature(response);
-    displayCity(response);
-    adjustCityFontSize();
-    displayDescription(response);
-    displayFeelsLike(response);
-    displayHumidity(response);
-    displayWind(response);
-    displayMainIcon(response);
-  });
-}
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temp");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 fetchWeatherForSearchedCity("London");
 
