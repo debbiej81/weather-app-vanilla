@@ -61,15 +61,15 @@ function currentTime() {
 let displayCurrentTime = document.querySelector("#current-time");
 displayCurrentTime.innerHTML = currentTime();
 
+//the following code is to display forecast weather info on the page
+
 function formatDay(timestamp) {
-  let date = new date(timestamp * 1000);
+  let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return days[day];
 }
-
-//the following code is to display forecast weather info on the page
 
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -104,6 +104,7 @@ function displayForecast(response) {
   });
   forecastElement.innerHTML = forecastHTML;
 }
+
 //The following code updates on screen data based on current location (geo settings)
 
 //function to show the current temperature
