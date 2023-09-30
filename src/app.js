@@ -128,6 +128,7 @@ function capitaliseEveryWord(string) {
     })
     .join(" ");
 }
+
 //function to show the current description
 function displayDescription(response) {
   let descriptionElement = document.querySelector("#description");
@@ -171,12 +172,13 @@ function fetchWeatherForCurrentPosition(position) {
   axios.get(apiUrl).then(function (response) {
     displayTemperature(response);
     displayCity(response);
+    adjustCityFontSize(response.data.city);
     displayDescription(response);
     displayFeelsLike(response);
     displayHumidity(response);
     displayWind(response);
     displayMainIcon(response);
-    displayForecast();
+    displayForecast(response);
   });
 }
 
@@ -190,6 +192,7 @@ function fetchWeatherForSearchedCity(city) {
   axios.get(apiUrl).then(function (response) {
     displayTemperature(response);
     displayCity(response);
+    adjustCityFontSize(response.data.city);
     displayDescription(response);
     displayFeelsLike(response);
     displayHumidity(response);
@@ -224,6 +227,7 @@ function fetchWeatherForLondon() {
   axios.get(apiUrl).then(function (response) {
     displayTemperature(response);
     displayCity(response);
+    adjustCityFontSize();
     displayDescription(response);
     displayFeelsLike(response);
     displayHumidity(response);
@@ -258,3 +262,13 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 fetchWeatherForSearchedCity("London");
+
+function adjustCityFontSize(cityName) {
+  const cityElement = document.getElementById("city");
+
+  if (cityName.length > 8) {
+    cityElement.style.setProperty("--city-font-size", "3vw"); // Smaller base for longer names
+  } else {
+    cityElement.style.setProperty("--city-font-size", "3.6vw"); // Default base value
+  }
+}

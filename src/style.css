@@ -22,6 +22,11 @@ li {
   padding-left: 20px;
   border-right: 3px solid #1280e8;
   max-width: 100%;
+  --city-font-size: 3.6vw;
+}
+
+#city {
+  font-size: calc(min(36px, var(--city-font-size)));
 }
 
 .weather-description {
@@ -81,7 +86,7 @@ li {
 }
 .forecast-img img {
   padding: 10px;
-  width: 72px;
+  width: 96px;
 }
 .forecast-temp {
   font-weight: bold;
@@ -89,6 +94,7 @@ li {
 .forecast-min-temp {
   color: #969b9e;
 }
+
 .main-button {
   width: 150px;
   padding-top: 10px;
